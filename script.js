@@ -1,59 +1,47 @@
+var inputID = document.querySelector("#input");
+
 function todo() {
-    if ($("input").val() !== "") {
+    if(inputID.value !== "") {
+        //create new line with all elements
         var input = document.createElement("input");
         input.className = "toggle";
         input.type = "checkbox";
 
         var li = document.createElement("li");
         li.append(input);
-        li.append($("input").val());
+        li.append(inputID.value);
 
         var button = document.createElement("button");
         var text = document.createTextNode("X");
         button.append(text);
         li.append(button);
 
-        $("ul").append(li);
-        $("input").val("");
+        document.querySelector("ul").append(li);
+        inputID.value = "";
+
+        //deleting lines
+        button.addEventListener("click", function() {
+            this.parentNode.remove();
+        });
+
+        //checking and unchecking lines
+        li.addEventListener("click", function() {
+            if(input.parentNode.classList.contains("inactive")){
+                input.parentNode.classList.remove("inactive");
+                this.querySelector("input").checked = false;
+            } else {
+                input.parentNode.classList.add("inactive");
+                this.querySelector("input").checked = true;
+            }
+        });
     };
-
-    $("button").on("click", function() {
-        $(this).parent("li").remove();
-    });
 };
 
-function check() {
-    $(".toggle").on("click", function() {
-        if ($(this).prop("checked")) {
-            $(this).parent("li").css({
-                "text-decoration": "line-through",
-                "color": "#999"
-            });
-        } else {
-            $(this).parent("li").css({
-                "text-decoration": "none",
-                "color": "#000"
-            });
-        };
-    });
-};
+inputID.focus();
 
-$(document).ready(function() {
-    $("input").focus();
-
-    $("input").on("keypress", function(e) {
-        if (e.keyCode === 13) {
-            e.preventDefault();
-            todo();
-            check();
-        };
-    });
-
+inputID.addEventListener("keypress", function(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        todo();
+    };
 });
-
-
-/*
-$("ul").on("click","li", function() {
-    $(this).children(".toggle").trigger("click");
-});
-*/
