@@ -22,14 +22,14 @@ h1 {
 
 .input {
   font-family: inherit;
-  width: 400px;
+  width: 95%;
   margin: 20px 20px 20px 0;
 }
 
 li {
   list-style-type: none;
   display: inline-block;
-  width: 400px;
+  width: 95%;
   &:active {
     transform: translate(-1px,1px);
     box-shadow: -4px 4px 5px rgba(0,0,0,0);
@@ -39,12 +39,11 @@ li {
 ul {
   margin: auto;
   padding-left: 0;
-  width: 400px;
+  width: 95%;
 }
 
 form {
   text-align: center;
-  margin-left: 40px;
 }
 
 button {
@@ -74,5 +73,24 @@ button {
   color: #bbb;
   &:hover {
     color: #555;
+  }
+}
+
+//-----------------------BIGGER Phones----------------------
+@media only screen and (min-width: 480px) {
+  .input {
+    width: 400px;
+  }
+
+  li {
+    width: 400px;
+  }
+
+  ul {
+    width: 400px;
+  }
+
+  form {
+    margin-left: 40px;
   }
 }
