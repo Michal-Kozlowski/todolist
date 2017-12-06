@@ -61,8 +61,8 @@
       text-align: center; }
 
     .fa-trash, .fa-check {
+      font-size: 1.45em;
       float: right;
-      padding: 5px 3px 0 0;
       color: #bbb; }
       .fa-trash:hover {
         color: #bc2a0d; }
